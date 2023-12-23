@@ -1,24 +1,20 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class world{
     double current_time, time_increment, max_time;
+    ArrayList<sphere> balls = new ArrayList<sphere>();
+    ArrayList<immovableObj> immovableObjs = new ArrayList<immovableObj>();
+    ArrayList<point[]> postions = new ArrayList<point[]>();
     vector g;
-    double height_of_sphere;
     Scanner sc;
-    
-    //----------------------world objects declared here ---------------------
-    //sphere s1;
-    //-------------------------------------------------
 
-
-    world()
+    public world()
     {
         current_time = 0;
         time_increment = 0.01;
         g = new vector(0, -9.8);
         max_time = 3;
-      //  s1 = new sphere();
-        height_of_sphere = 0;
         sc = new Scanner(System.in);
     }
     
@@ -33,7 +29,7 @@ public class world{
     public void setIncTime(double seconds){
         if(seconds < 0)
         {
-            System.out.println("!!!increment time cannot be negative!!!");
+            System.out.println("!!!increment time cannot be negative!!!");          //change to exception
             System.out.println("setting increment_time to " + time_increment);
         }
         else
@@ -47,46 +43,66 @@ public class world{
 
     public boolean worldEnd()
     {
-        if(current_time != max_time)
+        if(current_time < max_time)
             return false;
         else
             return true;
     }
-
     public void incTime()
     {
         current_time += time_increment;
     }   
 
-    public void setHeightOfSphere()
+    //use the following functions to insert objects into the world.
+    public void addSphere(point center, vector velocity, double radius)
     {
-        String input;
-        System.out.println("how high is the Sphere to be placed?");
-        input = sc.next();
-        if(input.charAt(0) == 'g')
-        {
-            System.out.println("set gravity : ");
-            g.y = sc.nextDouble();
-            System.out.println("set height of object : ");
-            height_of_sphere = sc.nextDouble();
-        }
-        else{
-            height_of_sphere = Double.parseDouble(input);
-        }
-        //s1.setPos(vector.setVector(0,height_of_sphere));
-        //s1.showPosition();
+        //add new sphere to the set of objects.
+        sphere s1 = new sphere(center,radius);  //add exceptions in case the sphere is kept in an illegal place, i.e. it is intersecting with another object on creation itself
+        s1.setVelocity(velocity);
+        balls.add(s1);
+        int nop = (int)(max_time / time_increment);
+        point[] p = new point[nop];
+        postions.add(p);
+
+    }
+    public void addSurface(double a, double b, double c)
+    {
+        surface s = new surface(a,b,c);
+        immovableObjs.add(s);
+    }
+    public void addRoundBlock(point center, double radius)
+    {
+        round_block r = new round_block(center,radius);
+        immovableObjs.add(r);
     }
 
-    
-    public void run()
+    public void run()       //render the simulation
     {       
-        setHeightOfSphere();
-        while(current_time < max_time)
-        {   System.out.println("\n" + current_time + "\t"); 
- //           s1.showPosition();
- //           s1.changePosBy(vector.calcDistance(s1.velocity, g, time_increment));
- //           s1.setVelocity(vector.calcVelocity(s1.velocity, g, time_increment));
+        while(!worldEnd())
+        {   System.out.println("\ntime : " + current_time + "\t"); 
+            for(int i = 0; i < balls.size(); i++)
+            {
+                for(int j = 0; j < immovableObjs.size(); j++){
+                    immovableObjs.get(i).interactWith(balls.get(i));
+                }
+                point[] tmp = postions.get(i);
+                tmp[(int)(current_time / time_increment)] = balls.get(i).c.center;
+                postions.set(i,tmp);
+            }
             this.incTime();
+        }
+    }
+
+    public void simulate()  //display the simulation
+    {
+        for(int j = 0; j < balls.size(); j++)
+        {   
+            point[] tmp = postions.get(j);
+            System.out.println("object " + j + "positions :");
+            for(double i = 0; i < max_time; i += time_increment)
+            {
+                System.out.println(tmp[(int)(i / time_increment)].x  + " " + tmp[(int)(i / time_increment)].y);
+            }
         }
     }
 }

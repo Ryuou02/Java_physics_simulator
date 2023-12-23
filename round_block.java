@@ -1,3 +1,24 @@
 public class round_block extends immovableObj{
-    shapes circle;
+    circle c;
+    public round_block()
+    {
+        super();
+        c = new circle();
+    }
+    public round_block(point center, double radius)
+    {
+        super();
+        c = new circle(center,radius);
+    }
+    public void interactWith(sphere obj1)
+    {
+        if(obj1.c.intersects(this.c))
+        {
+            double angle = 0;
+            angle = Math.atan2(obj1.c.center.y-this.c.center.y,obj1.c.center.x-this.c.center.x);
+            vector newVel1 = obj1.velocity.rotateBy(angle);
+            newVel1.x = -1 * newVel1.x;
+            obj1.velocity = newVel1.rotateBy(-1 * angle);
+        }
+    }
 }

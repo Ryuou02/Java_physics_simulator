@@ -38,11 +38,11 @@ public class vector{
         v.y = y;
         return v;
     }
-
-    public static double distance(vector v1, vector v2)
+    public vector rotateBy(double angle)
     {
-        double v;
-        v = ((v1.x - v2.x) * (v1.x - v2.x)) + ((v1.y - v2.y) * (v1.y - v2.y));
-        return Math.sqrt(v);
+        vector tmp = new vector();
+        tmp.x = Math.cos(angle) * this.x - Math.sin(angle) * this.y;
+        tmp.y = Math.sin(angle) * this.x + Math.cos(angle) * this.y;
+        return tmp;
     }
 }
