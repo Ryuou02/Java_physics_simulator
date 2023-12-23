@@ -86,6 +86,7 @@ public class world{
                     immovableObjs.get(i).interactWith(balls.get(i));
                 }
                 point[] tmp = postions.get(i);
+                balls.get(i).updateVelocity(time_increment);
                 tmp[(int)(current_time / time_increment)] = balls.get(i).c.center;
                 postions.set(i,tmp);
             }

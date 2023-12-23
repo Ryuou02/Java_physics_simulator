@@ -16,12 +16,10 @@ public class vector{
         y += v1.y;
     }
 
-    public static vector calcVelocity(vector initialVelocity, vector acceleration, double seconds)
+    public void calcVelocity(vector initialVelocity, vector acceleration, double seconds)
     {
-        vector v1 = new vector();
-        v1.x = initialVelocity.x + acceleration.x * seconds;
-        v1.y = initialVelocity.y + acceleration.y * seconds;
-        return v1;
+        this.x = initialVelocity.x + acceleration.x * seconds;
+        this.y = initialVelocity.y + acceleration.y * seconds;
     }
     public static vector calcDistance(vector initialVelocity, vector acceleration, double seconds)
     {
@@ -31,12 +29,10 @@ public class vector{
         return v1;
     }
 
-    public static vector setVector(double x, double y)
+    public void setVector(double x, double y)
     {
-        vector v = new vector();
-        v.x = x;
-        v.y = y;
-        return v;
+        this.x = x;
+        this.y = y;
     }
     public vector rotateBy(double angle)
     {

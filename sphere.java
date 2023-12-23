@@ -1,3 +1,4 @@
+
 public class sphere extends moveableobject{
     public circle c;
     sphere()
@@ -15,6 +16,24 @@ public class sphere extends moveableobject{
     public void setCenter(point p)
     {
         c.center = p;
+    }
+    public void updateVelocity(double time)
+    {
+        double eta = 1.81e-5;
+        vector dragForce = new vector();
+        double drag = 6 * 3.1415 * eta * this.c.radius * this.velocity.x;
+        dragForce.setVector(drag,0);
+        drag = 6 * 3.1415 * eta * this.c.radius * this.velocity.y;
+        dragForce.setVector(dragForce.x, drag);
+        vector netForce = new vector();
+
+        //added drag Force
+        netForce.add(dragForce);
+        vector netAccel = new vector();
+        netAccel.setVector(netForce.x / mass, netForce.y / mass);
+        
+        // calculate final velocity
+        this.velocity.calcVelocity(this.velocity, netAccel, time);
     }
 
     public void checkCollisionAndSetVelocity(sphere s1)
