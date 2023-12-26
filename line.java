@@ -34,7 +34,7 @@ public class line extends shapes
     }
     boolean intersects(circle c)
     {
-        if(distanceToCircle(c) < 0)
+        if(distanceToCircle(c) <= 0)
             return true;
         else return false;
     }
