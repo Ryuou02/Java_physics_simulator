@@ -49,10 +49,4 @@ public class line extends shapes
         tmp.y = (l1.a * this.c - this.a - l1.c) / (this.a * l1.b - l1.a * this.b);
         return tmp;
     }
-    /* 
-    vector perpendicularToCircle(circle c1)
-    {
-
-    }
-    */
 }
