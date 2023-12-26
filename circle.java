@@ -18,7 +18,7 @@ public class circle extends shapes{
     }
     public boolean intersects(circle c1)
     {
-        if(this.center.distanceTo(c1.center) < c1.radius + this.radius && this.center.distanceTo(c1.center) > this.radius && this.center.distanceTo(c1.center) > c1.radius)
+        if(this.center.distanceTo(c1.center) <= c1.radius + this.radius && this.center.distanceTo(c1.center) > this.radius && this.center.distanceTo(c1.center) > c1.radius)
         {
             return true;
         }
