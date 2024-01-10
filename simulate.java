@@ -2,7 +2,7 @@ public class simulate{
     public static void main(String[] args)
     {
         world w1 = new world();
-        w1.setMaxTime(7);
+        w1.setMaxTime(20);
         w1.setIncTime(0.01);
         new mainframe(w1);
          /* 

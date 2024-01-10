@@ -58,8 +58,9 @@ public class drawpad extends JPanel implements ActionListener{
         //draw circles
         for(int i = 0; i < world.circles.size(); i++)
         {
+            g2d.setPaint(Color.GREEN);
             try{
-            g2d.drawOval(
+            g2d.fillOval(
                 (int)(world.circles.get(i).c.center.x - (int)world.circles.get(i).c.radius), 
                 sim_height - (int)(world.circles.get(i).c.center.y + (int)world.circles.get(i).c.radius), 
                 (int)world.circles.get(i).c.radius * 2, 
@@ -70,6 +71,7 @@ public class drawpad extends JPanel implements ActionListener{
                 {
                     System.out.println("error found in segment 2");
                 }
+            g2d.setPaint(Color.BLACK);
         }
         //draw spheres
         for(int j = 0; j < world.balls.size(); j++){
@@ -81,6 +83,7 @@ public class drawpad extends JPanel implements ActionListener{
                     (int)world.balls.get(j).c.radius * 2, 
                     (int)world.balls.get(j).c.radius * 2
                 );
+                g2d.drawString("sphere " + j + " : " + (world.postions.get(k)[j].x) + " , " + (world.postions.get(k)[j].y),0,20*(j + 1));
                 }
                 catch(NullPointerException e)
                 {
@@ -88,7 +91,7 @@ public class drawpad extends JPanel implements ActionListener{
                 }
                 catch(IndexOutOfBoundsException e)
                 {
-                    System.out.println(" OB error found in segment 3\n i = " + k + "\nj = " + j);
+                    System.out.println("too many frames rendered");
                 }
         }
     }
@@ -98,7 +101,7 @@ public class drawpad extends JPanel implements ActionListener{
     {
         if(k < world.postions.size() - 2)
         {
-            k++;
+            k += 10;
         }
         repaint();
     }

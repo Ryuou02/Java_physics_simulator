@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public abstract class moveableobject{
     public vector velocity;
     public point position;
@@ -24,6 +26,7 @@ public abstract class moveableobject{
     }
     public void setVelocity(vector v)
     {
+        JOptionPane.showMessageDialog(null, "velocity reset to " + v.x + ", " + v.y, "", JOptionPane.INFORMATION_MESSAGE);
         velocity = v;
     }
   

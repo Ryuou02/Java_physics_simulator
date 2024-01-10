@@ -7,6 +7,8 @@ public class world{
     static ArrayList<surface> lines = new ArrayList<surface>();
     static ArrayList<round_block> circles = new ArrayList<round_block>();
     static ArrayList<point[]> postions = new ArrayList<point[]>();
+    static ArrayList<point> initpos = new ArrayList<point>();
+    static ArrayList<vector> initvelocities = new ArrayList<vector>();
     vector g;
     Scanner sc;
 
@@ -19,6 +21,11 @@ public class world{
         sc = new Scanner(System.in);
     }
     
+    public void setGravity(double g)
+    {
+        this.g.y = -g;
+    }
+
     public void displayStats()
     {
         System.out.println("current time : " + current_time);
@@ -60,11 +67,9 @@ public class world{
         //add new sphere to the set of objects.
         sphere s1 = new sphere(center,radius,mass);  //add exceptions in case the sphere is kept in an illegal place, i.e. it is intersecting with another object on creation itself
         s1.setVelocity(velocity);
+        initvelocities.add(s1.velocity);
+        initpos.add(s1.c.center);
         balls.add(s1);
-        int nop = (int)(max_time / time_increment);
-        point[] p = new point[nop];
-        postions.add(p);
-
     }
     public static void addSurface(double a, double b, double c)
     {
@@ -81,10 +86,20 @@ public class world{
         round_block r = new round_block(center,radius);
         circles.add(r);
     }
+    void resetWorld()
+    {
+        current_time = 0;
+        for(int i = 0; i < balls.size(); i++)
+        {
+            balls.get(i).setPos(new point(20,100));
+            balls.get(i).setVelocity(new vector(0, 0));
+            System.out.println("initial values =>" + balls.get(i).position.y);
+        }
+        postions.clear();
+    }
 
     public void run()       //render the simulation
     {       
-        current_time = 0;
         while(!worldEnd())
         {   System.out.println("\ntime : " + current_time + "\t"); 
             point[] tmp = new point[balls.size()];
