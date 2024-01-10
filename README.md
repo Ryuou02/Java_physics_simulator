@@ -1,1 +1,3 @@
-this is simple physics simulator that can simulate the physics of <b>balls</b><br>nice
+this is an application, coded in java to simulate physics, using classical physics laws.
+It can simulate free falling spheres, the spheres collide with each other and every stationary object as a perfectly elastic collision
+
