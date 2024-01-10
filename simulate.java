@@ -1,10 +1,10 @@
 public class simulate{
     public static void main(String[] args)
     {
-        world w1 = new world();
-        w1.setMaxTime(20);
-        w1.setIncTime(0.01);
-        new mainframe(w1);
+        world world = new world();
+
+        new mainframe(world);
+
          /* 
         surface s1 = new surface(new point(0,20), new point(500,20));
         //round_block r = new round_block(new point(5,5),5);

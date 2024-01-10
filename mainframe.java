@@ -1,10 +1,11 @@
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,8 @@ public class mainframe extends JFrame implements ActionListener{
     
     JCheckBox defaultSurface = new JCheckBox("set ground by default");
     JCheckBox setbounds = new JCheckBox("set bounds");
+
+    ImageIcon img = new ImageIcon("Untitled.png");
 
     JPanel p1 = new JPanel();
     JLabel ti = new JLabel("set time increment (seconds):");
@@ -64,6 +67,7 @@ public class mainframe extends JFrame implements ActionListener{
         this.setResizable(false);
         this.setSize(1000,800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setIconImage(img.getImage());
         this.setLocationRelativeTo(null);
         this.pack();
     }
@@ -87,7 +91,7 @@ public class mainframe extends JFrame implements ActionListener{
             boolean retry = true;
             while(retry){
                 retry = false;
-                double radius = Math.random() * 100;
+                double radius = Math.random() * 20;
                 s = new sphere(new point(radius + Math.random() * (500 - radius * 2),radius + Math.random() * (500 - radius * 2)),radius,Math.random() * 1000);
                 for(int i = 0; i < world.balls.size(); i++)
                 {
@@ -273,7 +277,7 @@ public class mainframe extends JFrame implements ActionListener{
     }
     private class setWorldValues extends JFrame implements ActionListener{
         JButton addtoframe = new JButton("set world values");
-        JTextField A = new JTextField("0.1");
+        JTextField A = new JTextField("0.01");
         JTextField B = new JTextField("10");
         JTextField C = new JTextField("9.8");
         
@@ -325,9 +329,9 @@ public class mainframe extends JFrame implements ActionListener{
     {
         if(e.getSource() == newObject)
         {
-            newObject.setEnabled(false);
             new getNewObjectDimensions();
-            newObject.setEnabled(true);
+            if(world.balls.size() > 2)
+                newObject.setEnabled(false);
         }
         if(e.getSource() == newLine)
         {
@@ -339,6 +343,8 @@ public class mainframe extends JFrame implements ActionListener{
         }
         if(e.getSource() == renderSim)
         {
+            JOptionPane.showMessageDialog(null,"rendering simulation ... ", "please wait", JOptionPane.OK_OPTION);
+
             renderSim.setEnabled(false);
             if(defaultSurface.isSelected())
             {
@@ -348,8 +354,10 @@ public class mainframe extends JFrame implements ActionListener{
             {
                 world.addSurface(new point(0,0), new point(0,500));
                 world.addSurface(new point(500,0), new point(500,500));
+                world.addSurface(new point(0,500), new point(500,500));
+                world.addSurface(new point(0,0), new point(500,0));
             }
-            useful.setText("rendering simulation");
+            ///* 
             obj.run();
             useful.setText("rendering complete");
             newCircle.setEnabled(false);
@@ -357,6 +365,7 @@ public class mainframe extends JFrame implements ActionListener{
             newObject.setEnabled(false);
             playSim.setEnabled(true);
             setTime.setEnabled(false);
+        
         }
         if(e.getSource() == playSim)
         {

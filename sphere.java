@@ -27,7 +27,7 @@ public class sphere extends moveableobject{
         drag = 6 * 3.1415 * eta * this.c.radius * this.velocity.y;
         dragForce.setVector(dragForce.x, drag);
         vector netForce = new vector();
-        vector gravity = new vector(0,-9.8*mass);
+        vector gravity = new vector(world.g.x * mass, world.g.y * mass);
 
         //added drag Force
         netForce.add(dragForce);
@@ -50,8 +50,8 @@ public class sphere extends moveableobject{
     {
         if(s1.c.intersects(this.c)) //a collision is detected
         {
-            System.out.println("--------------------------------------collision detected");
-            System.out.println("previous velocities => " + this.velocity.x + ", " + this.velocity.y + " and " + s1.velocity.x + " , " + s1.velocity.y);
+            //System.out.println("--------------------------------------collision detected");
+            //System.out.println("previous velocities => " + this.velocity.x + ", " + this.velocity.y + " and " + s1.velocity.x + " , " + s1.velocity.y);
             double angle = 0;
             angle = Math.atan2(s1.c.center.y-this.c.center.y,s1.c.center.x-this.c.center.x);
             vector newVel1 = this.velocity.rotateBy(angle);
@@ -63,10 +63,10 @@ public class sphere extends moveableobject{
             newVel1.x = tmp;
             s1.velocity = newVel2.rotateBy(-1 * angle);
             this.velocity = newVel1.rotateBy(-1 * angle);
-            System.out.println("new velocities => " + this.velocity.x + ", " + this.velocity.y + " and " + s1.velocity.x + " , " + s1.velocity.y);
+            //System.out.println("new velocities => " + this.velocity.x + ", " + this.velocity.y + " and " + s1.velocity.x + " , " + s1.velocity.y);
         }
         else{
-            System.out.println(";'no collision");
+            //System.out.println(";'no collision");
         }
     }
 }

@@ -9,21 +9,20 @@ public class world{
     static ArrayList<point[]> postions = new ArrayList<point[]>();
     static ArrayList<point> initpos = new ArrayList<point>();
     static ArrayList<vector> initvelocities = new ArrayList<vector>();
-    vector g;
+    static vector g = new vector(0, -9.8);        //gravity;
     Scanner sc;
 
     public world()
     {
         current_time = 0;
         time_increment = 0.01;
-        g = new vector(0, -9.8);        //gravity
-        max_time = 3;
+        max_time = 100;
         sc = new Scanner(System.in);
     }
     
     public void setGravity(double g)
     {
-        this.g.y = -g;
+        world.g.y = -g;
     }
 
     public void displayStats()
@@ -100,6 +99,7 @@ public class world{
 
     public void run()       //render the simulation
     {       
+        int k = 0;
         while(!worldEnd())
         {   System.out.println("\ntime : " + current_time + "\t"); 
             point[] tmp = new point[balls.size()];
@@ -124,7 +124,9 @@ public class world{
                 //System.out.println("simulating, x = " + tmp[i].x + " y = ");
             }
             this.incTime();
-            postions.add(tmp);
+            if(k%10 == 0)
+                postions.add(tmp);
+            k++;
         }
     }
 }

@@ -7,6 +7,7 @@ public class drawpad extends JPanel implements ActionListener{
     final int sim_width = 500;
     int k;
     Timer timer;
+    Graphics2D g2d;
 
     drawpad()
     {
@@ -20,10 +21,11 @@ public class drawpad extends JPanel implements ActionListener{
     public void paint(Graphics g)
     {
         super.paint(g);
-        Graphics2D g2d = (Graphics2D)g;
+        g2d = (Graphics2D)g;
 //        g2d.drawOval(250,250,10,10);
         // draw all the required shapes based on the input.
         //draw lines
+        g2d.drawString("time : " + k/(float)100, 420, 20);
         int x1 = 0,y1 = 0,x2 = 0,y2 = 0;
         for(int i = 0; i < world.lines.size(); i++)
         {
@@ -101,7 +103,10 @@ public class drawpad extends JPanel implements ActionListener{
     {
         if(k < world.postions.size() - 2)
         {
-            k += 10;
+            k ++;
+        }
+        else{
+            k = 0;
         }
         repaint();
     }

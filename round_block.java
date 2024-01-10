@@ -22,7 +22,7 @@ public class round_block extends immovableObj{
             obj1.velocity.x = -obj1.velocity.x;
         }
         else{
-            System.out.println("+=+no collide");
+            //System.out.println("+=+no collide");
         }
     }
 }

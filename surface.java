@@ -14,8 +14,8 @@ public class surface extends immovableObj{
     {
         if(this.l1.intersects(obj1.c))
         {
-            System.out.println("--collision detected");
-            System.out.println("circle is at " + obj1.c.center.x + "," +  obj1.c.center.y);
+            //System.out.println("--collision detected");
+            //System.out.println("circle is at " + obj1.c.center.x + "," +  obj1.c.center.y);
            // get angle of line with x-axis
            double angle = this.l1.getAngle();
            // then get new components of velocity with respect to the surface
@@ -26,7 +26,7 @@ public class surface extends immovableObj{
            obj1.velocity = newVel.rotateBy(-1 * angle);
         }
         else{
-            System.out.println("--no collision");
+            //System.out.println("--no collision");
         }
     }
 }
