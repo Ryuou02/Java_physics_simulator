@@ -28,6 +28,13 @@ public class vector{
         v1.y = initialVelocity.y * seconds + acceleration.y * seconds * seconds / 2;
         return v1;
     }
+    public static vector calcDistance(vector initialVelocity, double seconds)
+    {
+        vector deltaDistance = new vector();
+        deltaDistance.x = initialVelocity.x * seconds;
+        deltaDistance.y = initialVelocity.y * seconds;
+        return deltaDistance;
+    }
 
     public void setVector(double x, double y)
     {

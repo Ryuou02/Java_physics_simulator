@@ -11,10 +11,10 @@ public class line extends shapes
     {   //throw exception if q1 and q2 are the same point.
         start = q1;
         end = q2;
-        finiteLine = true;
-        a = start.y - end.y;
+        //finiteLine = true;
         b = start.x - end.x;
-        c = -a * start.x - b * end.y;
+        a = end.y - start.y;
+        c = -a * start.x - b * start.y;
     }
     line(double a, double b, double c)
     {
@@ -40,11 +40,13 @@ public class line extends shapes
     }
     double distanceToCircle(circle c)
     {
-        return ((this.a * c.center.x) + (this.b * c.center.y) + this.c) / Math.sqrt(a * a + b * b) - c.radius;
+        System.out.println(Math.abs((this.a * c.center.x) + (this.b * c.center.y) + this.c) / Math.sqrt(a * a + b * b) - c.radius);
+        return Math.abs((this.a * c.center.x) + (this.b * c.center.y) + this.c) / Math.sqrt(a * a + b * b) - c.radius;
     }
     point IntersectionPoint(line l1)
     {
-        point tmp = new point(0,0);         //include exception for division by 0 here
+        point tmp = new point(0,0);         
+        //include exception for division by 0 here
         tmp.x = (this.b * l1.c - l1.b * this.c) / (this.a * l1.b - l1.a * this.b);
         tmp.y = (l1.a * this.c - this.a - l1.c) / (this.a * l1.b - l1.a * this.b);
         return tmp;

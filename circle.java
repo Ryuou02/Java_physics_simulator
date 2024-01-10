@@ -20,6 +20,7 @@ public class circle extends shapes{
     {
         if(this.center.distanceTo(c1.center) <= c1.radius + this.radius && this.center.distanceTo(c1.center) > this.radius && this.center.distanceTo(c1.center) > c1.radius)
         {
+            System.out.println("collision detected");
             return true;
         }
         else return false;
