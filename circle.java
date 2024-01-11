@@ -9,6 +9,10 @@ public class circle extends shapes{
     public circle(point p, double radius)
     {   //throw exception if radius is negative
         super();
+        if (radius < 0) {
+            throw new IllegalArgumentException("Radius cannot be negative");
+        }
+
         center = new point(p);
         this.radius = radius;
     }

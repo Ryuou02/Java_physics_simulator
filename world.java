@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import java.util.ArrayList;
 
 public class world{
@@ -64,7 +67,13 @@ public class world{
     public static void addSphere(point center, vector velocity, double radius, double mass)
     {
         //add new sphere to the set of objects.
-        sphere s1 = new sphere(center,radius,mass);  //add exceptions in case the sphere is kept in an illegal place, i.e. it is intersecting with another object on creation itself
+        sphere s1 = new sphere();
+        try{
+            s1 = new sphere(center,radius,mass);  //add exceptions in case the sphere is kept in an illegal place, i.e. it is intersecting with another object on creation itself
+        }catch(IllegalArgumentException i){
+            JOptionPane.showMessageDialog(null, i.getMessage(),"invalid values!",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         s1.setVelocity(velocity);
         initvelocities.add(s1.velocity);
         initpos.add(s1.c.center);
@@ -72,17 +81,35 @@ public class world{
     }
     public static void addSurface(double a, double b, double c)
     {
-        surface s = new surface(a,b,c);
+        surface s = new surface(0,1,0);
+        try{
+        s = new surface(a,b,c);
+        }catch(IllegalArgumentException i){
+            JOptionPane.showMessageDialog(null, i.getMessage(),"invalid values!",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         lines.add(s);
     }
     public static void addSurface(point p1, point p2)
     {
-        surface s = new surface(p1,p2);
+        surface s = new surface(new point(0,0), new point(500,0));
+        try{
+        s = new surface(p1,p2);
+        }catch(IllegalArgumentException i){
+            JOptionPane.showMessageDialog(null, i.getMessage(),"invalid values!",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         lines.add(s);
     }
     public static void addRoundBlock(point center, double radius)
     {
-        round_block r = new round_block(center,radius);
+        round_block r = new round_block();
+        try{
+            r = new round_block(center,radius);
+        }catch(IllegalArgumentException i){
+            JOptionPane.showMessageDialog(null, i.getMessage(),"invalid values!",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         circles.add(r);
     }
     void resetWorld()

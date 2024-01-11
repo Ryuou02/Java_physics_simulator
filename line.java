@@ -9,16 +9,36 @@ public class line extends shapes
     boolean finiteLine;
     line(point q1, point q2)
     {   //throw exception if q1 and q2 are the same point.
+        if (q1.equals(q2)) {
+            throw new IllegalArgumentException("The start and end points of a line cannot be the same.");
+        }
         start = q1;
         end = q2;
         //finiteLine = true;
         b = start.x - end.x;
         a = end.y - start.y;
         c = -a * start.x - b * start.y;
+        if(a == 0){
+            start.y = -c/b;
+            end.y = -c/b;
+            start.x = 0;
+            end.x = 500;
+        }
+        else{
+            start.y = 0;
+            end.y = 500;
+            start.x = -1*(b*start.y + c)/a;
+            end.x = -1*(b*end.y + c)/a;
+            System.out.println("points are " + start.x + "," + start.y + " and " + end.x + "," + end.y);
+        }
     }
     line(double a, double b, double c)
     {
         // if a, b are set to 0 throw an exception
+        if (a == 0 && b == 0) {
+            throw new IllegalArgumentException("Coefficients 'a' and 'b' cannot both be zero.");
+        }
+
         this.a = a;
         this.b = b;
         this.c = c;

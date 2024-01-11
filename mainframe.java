@@ -146,16 +146,19 @@ public class mainframe extends JFrame implements ActionListener{
             if(e.getSource() == addtoframe)
             {
                 vector vel = new vector();
-
-                //--------------------------handle exception caused by parseDouble function---------------------------
-                vel.x = Double.parseDouble(xvelocity.getText());
-                vel.y = Double.parseDouble(yvelocity.getText());
-                point cn = new point(Double.parseDouble(xpos.getText()),Double.parseDouble(ypos.getText()));
-                double mas = Double.parseDouble(mass.getText());
-                double rad = Double.parseDouble(radius.getText());
-                //---------------------------------------------------------------------------------------------------
-
-
+                point cn = new point();
+                double mas = 1, rad = 1;
+                try{
+                    vel.x = Double.parseDouble(xvelocity.getText());
+                    vel.y = Double.parseDouble(yvelocity.getText());
+                    cn = new point(Double.parseDouble(xpos.getText()),Double.parseDouble(ypos.getText()));
+                    mas = Double.parseDouble(mass.getText());
+                    rad = Double.parseDouble(radius.getText());
+                }catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(this, "Invalid input! Please enter valid numeric values.");
+                    this.dispose();
+                    return;
+                }
                 world.addSphere(cn,vel,rad,mas);
                 this.dispose();
             }
@@ -206,14 +209,20 @@ public class mainframe extends JFrame implements ActionListener{
         {
             if(e.getSource() == addtoframe)
             {
-                //--------------------------handle exception caused by parseDouble function---------------------------
-                double x1 = Double.parseDouble(X1.getText());
-                double y1 = Double.parseDouble(Y1.getText());
-                double x2 = Double.parseDouble(X2.getText());
-                double y2 = Double.parseDouble(Y2.getText());
-                //---------------------------------------------------------------------------------------------------
-
+                double x1 = 0,y1 = 0,x2 = 500,y2 = 0;
+                try{
+                    x1 = Double.parseDouble(X1.getText());
+                    y1 = Double.parseDouble(Y1.getText());
+                    x2 = Double.parseDouble(X2.getText());
+                    y2 = Double.parseDouble(Y2.getText());
+                }
+                catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(this, "Invalid input! Please enter valid numeric values.");
+                    this.dispose();
+                    return;
+               }
                 world.addSurface(new point(x1,y1), new point(x2,y2));
+               
                 this.dispose();
             }
             if(e.getSource() == cancel)
@@ -260,12 +269,17 @@ public class mainframe extends JFrame implements ActionListener{
         {
             if(e.getSource() == addtoframe)
             {
-                //--------------------------handle exception caused by parseDouble function---------------------------
-                double r = Double.parseDouble(radius.getText());
-                double x = Double.parseDouble(xpos.getText());
-                double y = Double.parseDouble(ypos.getText());
-                //---------------------------------------------------------------------------------------------------
-
+                double x = 0,r = 0,y = 0;
+                try{
+                    r = Double.parseDouble(radius.getText());
+                    x = Double.parseDouble(xpos.getText());
+                    y = Double.parseDouble(ypos.getText());
+                }
+                catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(this, "Invalid input! Please enter valid numeric values.");
+                    this.dispose();
+                    return;
+               }
                 world.addRoundBlock(new point(x,y),r);
                 this.dispose();
             }
@@ -311,11 +325,27 @@ public class mainframe extends JFrame implements ActionListener{
                 double inctime = 0.1;
                 double maxtime = 10;
                 double grav = -9.8;
+                try{
+                    inctime = Double.parseDouble(A.getText());
+                    maxtime = Double.parseDouble(B.getText());
+                    grav = Double.parseDouble(C.getText());
 
-                inctime = Double.parseDouble(A.getText());
-                maxtime = Double.parseDouble(B.getText());
-                grav = Double.parseDouble(C.getText());
-
+                    if(inctime < 0.01)
+                        throw new IllegalArgumentException("increment time set too low");
+                    else if(inctime > 0.09)
+                        JOptionPane.showMessageDialog(null, "Setting increment time too high can lead to simulation problems.","scary values!",JOptionPane.INFORMATION_MESSAGE);
+                    if(maxtime < 0)
+                        throw new IllegalArgumentException("max time cannot be negative");
+                }catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "Invalid input! Please enter valid numeric values.","invalid values!",JOptionPane.ERROR_MESSAGE);
+                    this.dispose();
+                    return;
+               }
+               catch(IllegalArgumentException i){
+                    JOptionPane.showMessageDialog(null, i.getMessage(),"invalid values!",JOptionPane.ERROR_MESSAGE);
+                    this.dispose();
+                    return;
+               }
                 obj.setIncTime(inctime);
                 obj.setMaxTime(maxtime*10);
                 obj.setGravity(grav);
@@ -343,7 +373,7 @@ public class mainframe extends JFrame implements ActionListener{
         }
         if(e.getSource() == renderSim)
         {
-            JOptionPane.showMessageDialog(null,"rendering simulation ... ", "please wait", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null,"rendering simulation ... ", "please wait", JOptionPane.INFORMATION_MESSAGE);
 
             renderSim.setEnabled(false);
             if(defaultSurface.isSelected())
