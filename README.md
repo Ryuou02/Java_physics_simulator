@@ -51,7 +51,7 @@ Adding the ground using the checkbox means to place a line that passes through 0
 
 ## add new round block
 <center><img width="288" alt="add new round block" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/4a3eaa77-7312-406c-9c82-50fb3743f1c4"></center><br>
-You can place a stationary sphere in the world using this. **you may keep 2 round blocks such that they collide**. Doing so will not cause an improper simulation.
+You can place a stationary sphere in the world using this. <b>You may keep 2 round blocks such that they collide</b>. Doing so will not cause an improper simulation.
 Round blocks will be drawn with bright green color to indicate that they are meant to be stationary.
 note - Collision of an object with a round block at high velocity may also cause improper simulation.
 
@@ -63,3 +63,11 @@ This window allows to set basic values of the world, a brief description about e
 3. gravity of the world - this is the value of gravity experienced by every object in the world. You can set this to a negative value also, then the spheres would fall upwards.
 4. drag coefficent - this is the drag coefficient experience by every object.  Drag force will decrease the velocity of the object based on this drag coefficient.
 
+**do not set world values while the simulation is being rendered.** This will cause errors in rendering the simulation.
+It is recommended to leave the time increment value as it is, without changing it. 
+
+## render the simulation
+On clicking this button, the simulation will be rendered. it is possible to add objects while the simulation is being rendered, without errors, as long as you're doing it properly. More number of objects means that the time taken to render the simulation will increase. 
+<img width="198" alt="Screenshot 2024-02-07 214510" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/ae444c33-bd1b-47ca-9cfd-8bdbf67c5e7c">
+<br>
+You will see the above window as the simulation gets rendered. It is possible to play the simulation before it completes rendering. However, the simulation will only run till where the simulation is rendered. **You will know that the simulation is rendered completely when you play the simulation and it runs till the simulation duration is completed before looping.**
