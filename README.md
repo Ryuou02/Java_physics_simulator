@@ -56,7 +56,7 @@ Round blocks will be drawn with bright green color to indicate that they are mea
 note - Collision of an object with a round block at high velocity may also cause improper simulation.
 
 ## set time values
-<img width="287" alt="Screenshot 2024-02-07 212528" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/401dda5c-b9e4-42df-9a94-0a154829d05f"><br>
+<img width="287" alt="Set time values" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/401dda5c-b9e4-42df-9a94-0a154829d05f"><br>
 This window allows to set basic values of the world, a brief description about each - 
 1. time increment of the world - On rendering the simulation, after a particular interval of time, the position of each object is recalculated, after checking for collisions with other objects and the forces       acting on each object. This time interval is called "time increment of the world".
 2. simulation duration - this is the maximum duration of the simulation. Larger simulation duration means that the memory consumed to store the simulation also will increase, hence do not set it too high.
@@ -68,14 +68,14 @@ It is recommended to leave the time increment value as it is, without changing i
 
 ## render the simulation
 On clicking this button, the simulation will be rendered. it is possible to add objects while the simulation is being rendered, without errors, as long as you're doing it properly. More number of objects means that the time taken to render the simulation will increase. 
-<img width="198" alt="Screenshot 2024-02-07 214510" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/ae444c33-bd1b-47ca-9cfd-8bdbf67c5e7c">
+<img width="198" alt="information box" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/ae444c33-bd1b-47ca-9cfd-8bdbf67c5e7c"><br>
 <br>
 You will see the above window as the simulation gets rendered. It is possible to play the simulation before it completes rendering. However, the simulation will only run till where the simulation is rendered. When the rendering is completed, there will be a message like "rendering complete" in the main window, after which you can play the simulation completely.
-<img width="252" alt="Screenshot 2024-02-07 215108" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/9a51b8e9-3e74-4024-9e13-d71ecfd4dac6">
+<img width="252" alt="main window while simulation is being rendered" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/9a51b8e9-3e74-4024-9e13-d71ecfd4dac6"><br>
 
 ## play the simulation
 You can play the simulation after it has been rendered.
-<img width="374" alt="Simulation window" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/8714c623-fb77-481d-85a7-47216551c15c">
+<img width="374" alt="Simulation window" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/8714c623-fb77-481d-85a7-47216551c15c"><br>
 the simulation window would look like this. At the top right, you will see the position of each object. At top left, you will see the current time of the simulation, in seconds. This may tend to be slightly slower than realtime as it needs to redraw the picture 10 times a second(in case the time interval is set to 0.01). The simulation will loop back to 0 seconds once it reaches the simulation duration.
 
 # Conclusion
