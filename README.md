@@ -21,7 +21,7 @@ Since this is an application made in java, please make sure that you have java i
 2. render - to make the program do the necessary calculations.
 # Running of the application
 <center><img width="255" alt="main page" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/16dd00db-c9cd-4762-988a-69fdda7ab01a"></center><br>
-Here is the screenshot of the main window of the application. It allows 4 basic functions -
+Here is the screenshot of the main window of the application. It allows 4 basic functions -<br>
   1. Add a sphere to the world.<br>
   2. Add a surface or stationary object to the world.<br>
   3. Rendering the simulation.(you can run the application after rendering the simulation only. Rendering means to calculate the position of every object at every moment in time.)<br>
