@@ -21,11 +21,11 @@ Since this is an application made in java, please make sure that you have java i
 2. render - to make the program do the necessary calculations.
 # Running of the application
 <center><img width="255" alt="main page" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/16dd00db-c9cd-4762-988a-69fdda7ab01a"></center><br>
-Here is the screenshot of the main window of the application. It allows 4 basic functions -<br>
-  1. Add a sphere to the world.<br>
-  2. Add a surface or stationary object to the world.<br>
-  3. Rendering the simulation.(you can run the application after rendering the simulation only. Rendering means to calculate the position of every object at every moment in time.)<br>
-  4. Playing the simulation.<br>
+Here is the screenshot of the main window of the application. It allows 4 basic functions -<pre>
+  1. Add a sphere to the world.
+  2. Add a surface or stationary object to the world.
+  3. Rendering the simulation.(you can run the application after rendering the simulation only. Rendering means to calculate the position of every object at every moment in time.)
+  4. Playing the simulation.</pre>
 
 It also allows for a slightly more complex function to "set time values" which is basically to set parameters for the world.
 
@@ -57,12 +57,12 @@ note - Collision of an object with a round block at high velocity may also cause
 
 ## set time values
 <img width="287" alt="Set time values" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/401dda5c-b9e4-42df-9a94-0a154829d05f"><br>
-This window allows to set basic values of the world, a brief description about each - 
+This window allows to set basic values of the world, a brief description about each - <pre>
 1. time increment of the world - On rendering the simulation, after a particular interval of time, the position of each object is recalculated, after checking for collisions with other objects and the forces       acting on each object. This time interval is called "time increment of the world".
 2. simulation duration - this is the maximum duration of the simulation. Larger simulation duration means that the memory consumed to store the simulation also will increase, hence do not set it too high.
 3. gravity of the world - this is the value of gravity experienced by every object in the world. You can set this to a negative value also, then the spheres would fall upwards.
 4. drag coefficent - this is the drag coefficient experience by every object.  Drag force will decrease the velocity of the object based on this drag coefficient.
-
+</pre>
 **do not set world values while the simulation is being rendered.** This will cause errors in rendering the simulation.
 It is recommended to leave the time increment value as it is, without changing it. 
 
