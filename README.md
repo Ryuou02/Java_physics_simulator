@@ -63,7 +63,8 @@ This window allows to set basic values of the world, a brief description about e
 3. gravity of the world - this is the value of gravity experienced by every object in the world. You can set this to a negative value also, then the spheres would fall upwards.
 4. drag coefficent - this is the drag coefficient experience by every object.  Drag force will decrease the velocity of the object based on this drag coefficient.
 </pre>
-**do not set world values while the simulation is being rendered.** This will cause errors in rendering the simulation.
+**do not set world values while the simulation is being rendered.** 
+This will cause errors in rendering the simulation.
 It is recommended to leave the time increment value as it is, without changing it. 
 
 ## render the simulation
