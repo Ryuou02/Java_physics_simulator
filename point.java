@@ -25,4 +25,9 @@ public class point {
         this.x += velocity.x;
         this.y += velocity.y;
     }
+    public void set(vector velocity)
+    {
+        this.x = velocity.x;
+        this.y = velocity.y;
+    }
 }
