@@ -70,4 +70,14 @@ It is recommended to leave the time increment value as it is, without changing i
 On clicking this button, the simulation will be rendered. it is possible to add objects while the simulation is being rendered, without errors, as long as you're doing it properly. More number of objects means that the time taken to render the simulation will increase. 
 <img width="198" alt="Screenshot 2024-02-07 214510" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/ae444c33-bd1b-47ca-9cfd-8bdbf67c5e7c">
 <br>
-You will see the above window as the simulation gets rendered. It is possible to play the simulation before it completes rendering. However, the simulation will only run till where the simulation is rendered. **You will know that the simulation is rendered completely when you play the simulation and it runs till the simulation duration is completed before looping.**
+You will see the above window as the simulation gets rendered. It is possible to play the simulation before it completes rendering. However, the simulation will only run till where the simulation is rendered. When the rendering is completed, there will be a message like "rendering complete" in the main window, after which you can play the simulation completely.
+<img width="252" alt="Screenshot 2024-02-07 215108" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/9a51b8e9-3e74-4024-9e13-d71ecfd4dac6">
+
+## play the simulation
+You can play the simulation after it has been rendered.
+<img width="374" alt="Simulation window" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/8714c623-fb77-481d-85a7-47216551c15c">
+the simulation window would look like this. At the top right, you will see the position of each object. At top left, you will see the current time of the simulation, in seconds. This may tend to be slightly slower than realtime as it needs to redraw the picture 10 times a second(in case the time interval is set to 0.01). The simulation will loop back to 0 seconds once it reaches the simulation duration.
+
+# Conclusion
+This application would be useful to demonstrate how objects interact with gravity, air/water resistance and how insignificant the effect of gravity is, between 2 objects of very large mass.
+
