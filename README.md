@@ -6,7 +6,7 @@ This is a simulator application, made using java, which helps the user to visual
   3. Drag force
   4. Collision with stationary objects like surfaces and stationary spheres
 
-It comes with an user-friendly GUI so that the application can be accessible to larger audience. The physics used in this application is entirely based on real world values. The default unit of distance is meters and for time it is seconds.
+It comes with a user-friendly GUI so that the application can be accessible to larger audience. The physics used in this application is entirely based on real world values. The default unit of distance is meters and for time it is seconds.
 
 ## How to run the application
 In case you are new to java, you may read the instructions to run the java application.
