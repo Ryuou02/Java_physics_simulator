@@ -70,7 +70,7 @@ It is recommended to leave the time increment value as it is, without changing i
 On clicking this button, the simulation will be rendered. it is possible to add objects while the simulation is being rendered, without errors, as long as you're doing it properly. More number of objects means that the time taken to render the simulation will increase. <br>
 <img width="198" alt="information box" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/ae444c33-bd1b-47ca-9cfd-8bdbf67c5e7c"><br>
 <br>
-You will see the above window as the simulation gets rendered. It is possible to play the simulation before it completes rendering. However, the simulation will only run till where the simulation is rendered. When the rendering is completed, there will be a message like "rendering complete" in the main window, after which you can play the simulation completely.
+You will see the above window as the simulation gets rendered. It is possible to play the simulation before it completes rendering. However, the simulation will only run till where the simulation is rendered. When the rendering is completed, there will be a message like "rendering complete" in the main window, after which you can play the simulation completely.<br>
 <img width="252" alt="main window while simulation is being rendered" src="https://github.com/Ryuou02/Java_physics_simulator/assets/133224167/9a51b8e9-3e74-4024-9e13-d71ecfd4dac6"><br>
 
 ## play the simulation
